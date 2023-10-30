@@ -42,7 +42,32 @@ namespace Vidly.Controllers
 
             //return RedirectToAction("Index", "Home",new { page=1,Sortby="name"});
         }
+        public ActionResult Details(int id)
+        {
 
+            string movie = string.Empty;
+
+
+            if (id == 1)
+            {
+                movie = "Shrek";
+            }
+            else if (id == 2)
+            {
+                movie = "Wall E";
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+
+            var viewModel = new Movie
+            {
+                Name = movie
+            };
+            return View(viewModel);
+
+        }
         public ActionResult Movie()
         {
             var movie = new List<Movie>
